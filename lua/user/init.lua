@@ -20,6 +20,20 @@ vim.keymap.set('n', '<leader>P', '"+P', keymap_opts)
 vim.keymap.set('v', '<leader>p', '"+p', keymap_opts)
 vim.keymap.set('v', '<leader>p', '"+P', keymap_opts)
 
+vim.opt.clipboard = "unnamedplus"
+
+vim.g.clipboard = {
+  name = "wl-clipboard",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy",
+  },
+  paste = {
+    ["+"] = "wl-paste",
+    ["*"] = "wl-paste",
+  },
+  cache_enabled = 0,
+}
 
 -- local dap = require'dap'
 --
