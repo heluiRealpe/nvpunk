@@ -20,6 +20,20 @@ vim.keymap.set('n', '<leader>P', '"+P', keymap_opts)
 vim.keymap.set('v', '<leader>p', '"+p', keymap_opts)
 vim.keymap.set('v', '<leader>p', '"+P', keymap_opts)
 
+vim.opt.clipboard:append("unnamedplus")
+
+require'lspconfig'.jsonls.setup {
+    commands = {
+        Format = {
+            function()
+                vim.lsp.buf.format(nil, 1000)
+            end,
+            description = "Format current buffer with LSP"
+        }
+    }
+}
+vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format(nil, 1000)<CR>', { noremap = true, silent = true })
+
 
 -- local dap = require'dap'
 --
